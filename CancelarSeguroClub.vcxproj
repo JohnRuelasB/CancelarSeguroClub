@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9B4F090B-D853-4A5D-AE72-394EBDDB1055}</ProjectGuid>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110_xp</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)CancelarSeguroClub.dll</OutputFile>
+      <ModuleDefinitionFile>.\CancelarSeguroClub.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(OutDir)CancelarSeguroClub.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Clases;\\progs_lnx2\tdasw2012\hpp;\\progs_lnx2\Disco_c\cpp\Lmaxw2012Dll;\\progs_lnx2\tdasw2012\Clases;\\progs_lnx2\tdasw2012\hpp\CCuentaInet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>lmaxwt2012.lib;lmaxw2012.lib;ugmfc2012.lib;gcnML2012.lib;gcaML2012.lib;ggnML2012.lib;generalML2012.lib;dlgml2012.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)CN0027.DLL</OutputFile>
+      <AdditionalLibraryDirectories>\\progs_lnx2\tdasw2012\LIB;\\progs_lnx2\Disco_c\cpp\Lmaxw2012Dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\CancelarSeguroClub.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(OutDir)CancelarSeguroClub.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CancelarSeguroClub.cpp" />
+    <ClCompile Include="DlgCancelarSeguroClub.cpp" />
+    <ClCompile Include="ModuloPpal.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CCdFechaGnDominio.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarCliente.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarCteCrHuellas.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarIPServerTda.cpp" />
+    <ClCompile Include="\\progs_lnx2\TdasW\Clases\CConsultarIpSysServidores.cpp" />
+    <ClCompile Include="Clases\CConsultarMensajeSeguro.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarPID.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CCrHuellas.cpp" />
+    <ClCompile Include="\\progs_lnx2\TdasW\Clases\CInsertarTmpCaCarmov1.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CInsertarTmpCaSegCteNvo.cpp" />
+    <ClCompile Include="Clases\CInsTemCaCarmovAdics.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CMaximo.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CMensajeError.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CNombreSexFecCrCliente.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CObtenerNombreCliente.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CStatusFolioCrSeguros.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CStatusFolioCrSeguros01.cpp" />
+    <ClCompile Include="Clases\CStatusFolioCrSeguros02.cpp" />
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CVerificarCliente.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CancelarSeguroClub.def" />
+    <None Include="res\CancelarSeguroClub.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Clases\CConsultarMensajeSeguro.hpp" />
+    <ClInclude Include="\\progs_lnx2\tdasw\Clases\CCrHuellas.hpp" />
+    <ClInclude Include="Clases\CInsTemCaCarmovAdics.hpp" />
+    <ClInclude Include="Clases\CStatusFolioCrSeguros02.hpp" />
+    <ClInclude Include="DlgCancelarSeguroClub.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="sysCancelarSeguroClub.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CancelarSeguroClub.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CancelarSeguroClub.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,7 @@
+; CancelarSeguroClub.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CancelarSeguroClub"
+
+EXPORTS
+    ; Explicit exports can go here
+	CN0027;

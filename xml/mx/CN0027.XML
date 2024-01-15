@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-7"?>
+<INTERFAZ>
+<MENSAJES>
+<MSG id="1" tam="41">Error al intentar conectarse a Cartera</MSG>
+<MSG id="2" tam="34">No se pudo realizar la conexion</MSG>
+</MENSAJES>
+<REPORTES/>
+<DLG_01>
+<CONTROLES>
+<CTR id="67833" tam="48">CANCELACION DEL SEGURO CLUB PROTECCION COPPEL</CTR>
+<CTR id="67844" tam="23">Causa de Cancelación</CTR>
+<CTR id="67845" tam="22">1.   NO PUEDE PAGAR</CTR>
+<CTR id="67846" tam="20">2.   MAL SERVICIO</CTR>
+<CTR id="67847" tam="24">3.   CLIENTE SOLICITO</CTR>
+<CTR id="67848" tam="12">4.   OTRO</CTR>
+<CTR id="67849" tam="8">Causa</CTR>
+<CTR id="67850" tam="12">Asegurado</CTR>
+<CTR id="67851" tam="10">Cliente</CTR>
+<CTR id="67852" tam="8">Folio</CTR>
+<CTR id="67853" tam="9">Nombre</CTR>
+</CONTROLES>
+<MENSAJES>
+<MSG id="1" tam="48">CANCELACION DEL SEGURO CLUB PROTECCION COPPEL</MSG>
+<MSG id="2" tam="39">CANCELACION DEL SEGURO CLUB CONYUGAL</MSG>
+<MSG id="3" tam="39">[ ESC ] Cancelar     [ F10 ] Aceptar</MSG>
+<MSG id="4" tam="41">Cliente número: %ld no está registrado</MSG>
+<MSG id="5" tam="32">Causa de cancelación inválida</MSG>
+<MSG id="6" tam="102">PARA CANCELAR SEGUROS DE ESTE DIA PASE A LA OPCION 
+ F6 CONSULTA/CANCELACION DE RECIBOS DE SEGUROS</MSG>
+<MSG id="7" tam="97">PARA CANCELAR SEGUROS DE ESTE DIA PASE A LA OPCION 
+ CONSULTA/CANCELACION DE RECIBOS DE CAJAS</MSG>
+<MSG id="8" tam="30">El seguro ya está cancelado</MSG>
+<MSG id="9" tam="33">No existe ayuda para este dato</MSG>
+<MSG id="10" tam="35">Error al crear tabla temporal %s</MSG>
+<MSG id="11" tam="35">Error al crear tabla temporal %s</MSG>
+<MSG id="12" tam="34">El cliente no tiene seguro club</MSG>
+<MSG id="13" tam="70">HUELLA DEL CLIENTE NO HA SIDO RECONOCIDA, DESEA AUTORIZAR GERENTE ?</MSG>
+<MSG id="14" tam="71">HUELLA DEL CLIENTE NO HA SIDO RECONOCIDA. ¿AUTORIZACION DEL GERENTE?</MSG>
+<MSG id="15" tam="43">NO HAY ENLACE CON EL SERVIDOR DE HUELLAS</MSG>
+</MENSAJES>
+<REPORTES/>
+</DLG_01>
+</INTERFAZ>

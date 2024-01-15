@@ -1,0 +1,128 @@
+
+   Nombre del Caso de Uso: CU-0001-CancelarSeguroClub
+   Paquete: PCU-CancelarSeguroClub
+   Liberación: 1.
+   Prioridad: Esencial               Complejidad: Complejo
+   Tipo de Caso de Uso: Concreto
+   Versión: 20091002.1120
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Introduce los datos que se pidan del seguro y acepta los
+                           mensajes.
+               Secundario: Sensor de huella dactilar / Este pide la huella del gerente en caso de alguna autorización.
+
+   Objetivo:   Se encarga de cancelar los seguros club de Proteccion.
+   ___________________________________________________________________________________________
+   Precondiciones:
+
+                       1.- La cajera debe de haber capturado un cliente con seguro club valido.
+
+   Post-Condiciones:
+                       1.- Cancela el seguro club del cliente seleccionado.
+
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando la cajera decea cancelar un seguro club.
+
+                2.- El sistema pide la captura de la causa de cancelacion.
+
+                3.- La cajera introduce el numero de la causa.
+
+                4.- El sistema valida que sea una causa valida.
+
+                        4.a.- El sistema determina que la causa es valida.
+
+                        4.b.- El sistema determina que la causa es invalida.
+
+                5.- La cajera selecciona la opcion de Aceptar.
+
+                        5.a.- El sistema determina que el seguro fue realizado ese dia.
+
+                        5.b.- El sistema determina que el seguro no fue realizado ese dia.
+
+                6.- Fin del caso de uso.
+
+
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+
+                        4.a.- El sistema determina que la causa es valida.
+
+                                4.a.1.- El sistema continua en el paso 5 del flujo básico.
+
+                        4.b.- El sistema determina que la causa es invalida.
+
+                                4.b.1.- El sistema muestra mensaje correspondiente.
+
+                                4.b.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo básico.
+
+                        5.a.- El sistema determina que el seguro fue realizado ese dia.
+
+                                5.a.1.- El sistema muestra mensaje correspondiente.
+
+                                5.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 6 del flujo básico.
+
+                        5.b.- El sistema determina que el seguro no fue realizado ese dia.
+
+                                5.b.1.- El sistema verifica si el seguro esta cancelado.
+
+                                       5.b.1.a.- El sistema determina que el seguro ya esta cancelado.
+
+                                                5.b.1.a.1.- El sistema muestra mensaje correspondiente.
+
+                                                5.b.1.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 6 del flujo básico.
+
+                                       5.b.1.b.- El sistema determina que el seguro no esta cancelado.
+
+                                                5.b.1.b.1.- El sistema verifica si el seguro está activo.
+
+                                                        5.b.1.b.1.a.- El sistema determina que el seguro está activo.
+
+                                                                5.b.1.b.1.a.1.- El sistema verifica la fecha vencimiento.
+
+                                                                        5.b.1.b.1.a.1.a.- El sistema determina que la fecha de vencimiento es menor a la fecha actual.
+
+                                                                                5.b.1.b.1.a.1.a.1.- El sistema cancela el Seguro Club.
+
+                                                                                5.b.1.b.1.a.1.a.2.- El sistema continua en el paso 6 del flujo básico.
+
+                                                                        5.b.1.b.1.a.1.b.- El sistema determina que la fecha de vencimiento es mayor a la fecha actual.
+
+                                                                                5.b.1.b.1.a.1.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                                                5.b.1.b.1.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 6 del flujo básico.
+
+                                                        5.b.1.b.1.b.- El sistema determina que el seguro no este activo.
+
+                                                                5.b.1.b.1.b.1.- El sistema verifica que el Seguro está vencido.
+
+                                                                        5.b.1.b.1.b.1.a.- El sistema determina que el Seguro está vencido.
+
+                                                                                5.b.1.b.1.b.1.a.1.- El sistema cancela el Seguro Club.
+
+                                                                                5.b.1.b.1.b.1.a.2.- El sistema continua en el paso 6 del flujo básico.
+
+                                                                        5.b.1.b.1.b.1.b.- El sistema determina que el Seguro no está vencido.
+
+                                                                                5.b.1.b.1.b.1.b.1.- El sistema continua en el paso 6 del flujo básico.
+
+
+     (*) se utiliza para cuando son consideraciones generales.(Ejemplo: El Usuario puede cancelar el proceso en cualquier momento)
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario: CN0027-0001-CancelarSeguroClub.
+   Asociaciones:
+                   Asociaciones de Extensión: No aplica.
+                   Asociaciones de Inclusión:
+                                CU-0012-MostrarMenuSeguroClub
+                   Caso de Uso donde se Incluye: No aplica.
+                   Caso de Uso al que Extiende: No aplica.
+
+   Observaciones:
+   Autor:  Humberto Sánchez Lopéz
+   Fecha de Creación: 02/10/2009.
+
+

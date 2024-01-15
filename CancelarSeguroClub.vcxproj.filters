@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Clases">
+      <UniqueIdentifier>{617b03e7-078e-4172-bf00-54480726aebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CancelarSeguroClub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCancelarSeguroClub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuloPpal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CCdFechaGnDominio.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarCliente.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarCteCrHuellas.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarIPServerTda.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\TdasW\Clases\CConsultarIpSysServidores.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarMensajeSeguro.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CConsultarPID.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CCrHuellas.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\TdasW\Clases\CInsertarTmpCaCarmov1.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CInsertarTmpCaSegCteNvo.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsTemCaCarmovAdics.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CMaximo.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CMensajeError.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CNombreSexFecCrCliente.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CObtenerNombreCliente.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CStatusFolioCrSeguros.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CStatusFolioCrSeguros01.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CStatusFolioCrSeguros02.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="\\progs_lnx2\tdasw\Clases\CVerificarCliente.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CancelarSeguroClub.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\CancelarSeguroClub.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Clases\CConsultarMensajeSeguro.hpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="\\progs_lnx2\tdasw\Clases\CCrHuellas.hpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CInsTemCaCarmovAdics.hpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CStatusFolioCrSeguros02.hpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCancelarSeguroClub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sysCancelarSeguroClub.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CancelarSeguroClub.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
