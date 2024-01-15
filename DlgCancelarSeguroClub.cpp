@@ -32,6 +32,8 @@
 #include "CMaximo.hpp"
 #include "CConsultarMensajeSeguro.hpp"
 
+#include "strsafe.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -108,6 +110,8 @@ END_MESSAGE_MAP()
 
 BOOL CDlgCancelarSeguroClub::OnInitDialog()
 {
+
+	HRESULT hr = 0;
 bool bContinua=true, bContinuar=false;
 char cNombre[20], cApellidoPaterno[20], cApellidoMaterno[20], cSqlTxt[255];
 int iEstaCte=0, iFlag=0;
@@ -216,7 +220,13 @@ char cMensajeOut[MAX_BUFFER_XML] = {0};
 					{
 						//Se obtiene el error
 						sServer.Trim();
-						sprintf(cIPDestino,"%s",sServer);
+						/*
+						to do
+						//TO DO sprintf(cIPDestino,"%s",sServer);
+						*/
+						hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
+						
+
 						cIPDestino[15] = 0;
 
 						grabarMensajeError( "N", iCaja, cIPDestino, "CN0027", "CDlgCancelarSeguroClub", "OnInitDialog", cSqlTxt,lEmpleado,"Error #6220",consulta.odbc,iMuestraMsg);
@@ -459,9 +469,9 @@ void CDlgCancelarSeguroClub::OnBnClickedF10aceptar()
     else
 	{
 		consultarcrHuella.odbc->GetLastError(consultarcrHuella.GetHstmt());
-		sprintf(cConsulta,"%s",sConsulta);
+		//TO DO sprintf(cConsulta,"%s",sConsulta);
 		cConsulta[ sConsulta.GetLength() ] = 0;
-		sprintf(cIPDestino,"%s",sServer);
+		//TO DO sprintf(cIPDestino,"%s",sServer);
 		cIPDestino[15] = 0;
 		grabarMensajeError( "N",iCaja,cIPDestino,"CancelarSeguroClub","CDlgCancelarSeguroClub","validarHuellaCliente",cConsulta,lEmpleado,"ERROR EN LA CONSULTA",consultarcrHuella.odbc,iMuestraMsg );
 	}
@@ -723,9 +733,9 @@ void CDlgCancelarSeguroClub::OnEnSetfocusNombrecliente()
 //    CString sPassword,sBd,sUsuario;
 //	char cPassword[40], cUser[20], cDataBase[25];
 //
-//	sprintf(cDataBase,"tienda.%04d",iTienda);
+//	//TO DO sprintf(cDataBase,"tienda.%04d",iTienda);
 //	cDataBase[11] = 0;
-//	sprintf(cUser,"systienda%04d",iTienda);
+//	//TO DO sprintf(cUser,"systienda%04d",iTienda);
 //	cUser[13] = 0;
 //	generarPasswordDB(cUser, cDataBase, cPassword);
 //	cPassword[32] = 0;
@@ -754,9 +764,9 @@ void CDlgCancelarSeguroClub::OnEnSetfocusNombrecliente()
 //    CString sPassword,sBd,sUsuario;
 //	char cPassword[40], cUser[20], cDataBase[25];
 //
-//	sprintf(cDataBase,"cartera");
+//	//TO DO sprintf(cDataBase,"cartera");
 //	cDataBase[7] = 0;
-//	sprintf(cUser,"systiendacartera");
+//	//TO DO sprintf(cUser,"systiendacartera");
 //	cUser[16] = 0;
 //	generarPasswordDB(cUser, cDataBase, cPassword);
 //	cPassword[32] = 0;
@@ -781,6 +791,8 @@ void CDlgCancelarSeguroClub::OnEnSetfocusNombrecliente()
 
 bool CDlgCancelarSeguroClub::obtenerCdFechaCoppel()
 {
+
+	HRESULT hr = 0;
 	CString sSqlTxt;
 
 	bool bConsulta = true;
@@ -803,11 +815,19 @@ bool CDlgCancelarSeguroClub::obtenerCdFechaCoppel()
 		//Se obtiene el error
 		sServer.TrimLeft();
 		sServer.TrimRight();
-		sprintf(cIPDestino,"%s",sServer);
+		/*
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		*/
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
+		
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
 		sSqlTxt.TrimRight();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		/*
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		*/
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
+		
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		xCdFechaCoppel.odbc->GetLastError(xCdFechaCoppel.GetHstmt());
@@ -820,6 +840,8 @@ bool CDlgCancelarSeguroClub::obtenerCdFechaCoppel()
 
 bool CDlgCancelarSeguroClub::buscaSeguroCnsegCarmov( int iTabla, long lCliente, int &iSegCnseg )
 {
+
+	HRESULT hr = 0;
 	//iTabla = 1, Busca el seguro club en caSegurosClientesNuevos
 	//iTabla = 2, Busca el seguro club en caCarmov
 
@@ -871,11 +893,18 @@ bool CDlgCancelarSeguroClub::buscaSeguroCnsegCarmov( int iTabla, long lCliente, 
 		//Se obtiene el error
 		sServer.TrimLeft();
 		sServer.TrimRight();
-		sprintf(cIPDestino,"%s",sServer);
+		/*
+		to do
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		*/
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
 		sSqlTxt.TrimRight();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		/*to do
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		*/
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		xbuscaSeguro.odbc->GetLastError(xbuscaSeguro.GetHstmt());
@@ -888,6 +917,7 @@ bool CDlgCancelarSeguroClub::buscaSeguroCnsegCarmov( int iTabla, long lCliente, 
 
 bool CDlgCancelarSeguroClub::buscaSeguroCartera( long lCliente, int &iSegCartera, int &iSegCancelado, char &cStatusSeguro, int &iFlagTieneAdicionales )
 {
+	HRESULT hr = 0;
 	CString sSqlTxt, sFechaVenc, sTexto;
 	bool bConsulta = true, bMostrarSeguro = false;
 	long lFolioMenu = 0L, lFolioConsulta = 0L;
@@ -968,10 +998,18 @@ bool CDlgCancelarSeguroClub::buscaSeguroCartera( long lCliente, int &iSegCartera
 	{
 		//Se obtiene el error
 		sServer.Trim();		
-		sprintf(cIPDestino,"%s",sServer);
+		/*
+		to do
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		*/
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		/*
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		*/
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
+		
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		crSegurosSQL.odbc->GetLastError(crSegurosSQL.GetHstmt());
@@ -984,6 +1022,7 @@ bool CDlgCancelarSeguroClub::buscaSeguroCartera( long lCliente, int &iSegCartera
 
 void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long lFolio )
 {
+	HRESULT hr = 0;
 	bool bContinuar = true;
 	int iSeguroCartera = 0, iEncontro = 0, iSeguroCancelado = 0, iPID = 0, iPasaTmp = 0;
 	char cNombreTablaOrigen[50]={0}, cStatusSeg/*cFolio[5]*/;
@@ -1006,7 +1045,12 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 				if( iSistema == SISTEMA_CAJAS ) //if( iFlag == 1 )
 				{
 					//Crear tmp de aCarmov
-					sprintf( cNombreTablaOrigen, "caCarmov" );
+					/*
+					TO DO
+					//TO DO sprintf( cNombreTablaOrigen, "caCarmov" );
+					*/
+					hr = StringCchPrintf(cNombreTablaOrigen,size_t(cNombreTablaOrigen),TEXT("caCarmov"));
+
 					cNombreTablaOrigen[ 8 ] = 0;
 					iPID = crearTmp( cNombreTablaOrigen, bContinuar );
 					sTmpCaCarmov.Format( "tmp%s%d", cNombreTablaOrigen, iPID );
@@ -1022,24 +1066,30 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 						tmpCaCarmovSQL.activarCols();
 						tmpCaCarmovSQL.prepararInsert( sTmpCaCarmov );
 
-						sprintf( tmpCaCarmovSQL.clave, "G" );
+						//TO DO sprintf( tmpCaCarmovSQL.clave, "G" );
+						hr = StringCchPrintf(tmpCaCarmovSQL.clave,size_t(tmpCaCarmovSQL.clave),TEXT( "G"));
 						tmpCaCarmovSQL.clave[ 1 ] = 0;
-						sprintf( tmpCaCarmovSQL.tipomovimiento, "8" );
+						//TO DO sprintf( tmpCaCarmovSQL.tipomovimiento, "8" );
+						hr = StringCchPrintf(tmpCaCarmovSQL.tipomovimiento,size_t(tmpCaCarmovSQL.tipomovimiento),TEXT( "8"));
 						tmpCaCarmovSQL.tipomovimiento[ 1 ] = 0;
 						tmpCaCarmovSQL.tienda =(short int) iTienda;
 						tmpCaCarmovSQL.ciudad = (short int) iCiudad;
 						tmpCaCarmovSQL.cliente = lCliente;
 						tmpCaCarmovSQL.caja = (short int) iCaja;
 						tmpCaCarmovSQL.causabaja = (short int) iCausaBaja;
-						sprintf( tmpCaCarmovSQL.movtoseguro, "C" );
+						//TO DO sprintf( tmpCaCarmovSQL.movtoseguro, "C" );
+						hr = StringCchPrintf(tmpCaCarmovSQL.movtoseguro,size_t(tmpCaCarmovSQL.movtoseguro),TEXT( "C"));
 						tmpCaCarmovSQL.movtoseguro[ 1 ] = 0;
 						tmpCaCarmovSQL.folio = lFolio;
-						sprintf( tmpCaCarmovSQL.statusseguro, "%c", cStatusSeg );
+						//TO DO sprintf( tmpCaCarmovSQL.statusseguro, "%c", cStatusSeg );
+						hr = StringCchPrintf(tmpCaCarmovSQL.statusseguro,size_t(tmpCaCarmovSQL.statusseguro),TEXT( "%c"),cStatusSeg);
 						tmpCaCarmovSQL.statusseguro[ 1 ] = 0;					
 						tmpCaCarmovSQL.edad = 0;
 						tmpCaCarmovSQL.fecha.ponerFecha( iDiaActual, iMesActual, iAnioActual );
 						tmpCaCarmovSQL.efectuo = lEmpleado;
-						sprintf( tmpCaCarmovSQL.ipcarteracliente,"%s",sServer );
+						//TO DO sprintf( tmpCaCarmovSQL.ipcarteracliente,"%s",sServer );
+						hr = StringCchPrintf(tmpCaCarmovSQL.ipcarteracliente,size_t(tmpCaCarmovSQL.ipcarteracliente),TEXT( "%S"),sServer);
+						hr = StringCchPrintf(cNombreTablaOrigen,size_t(cNombreTablaOrigen),TEXT("caCarmov"));
 						if ( iTipo == 1)
 						{
 							tmpCaCarmovSQL.bonificacion=0;
@@ -1095,12 +1145,14 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 							//Se obtiene el error
 							sServer.TrimLeft();
 							sServer.TrimRight();
-							sprintf(cIPDestino,"%s",sServer);
+							//TO DO sprintf(cIPDestino,"%s",sServer);
+							hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 							cIPDestino[15] = 0;
 							sSqlTxt.Format( "Insertar en tabla %s", sTmpCaCarmov );
 							sSqlTxt.TrimLeft();
 							sSqlTxt.TrimRight();
-							sprintf(cConsulta,"%s",sSqlTxt);
+							//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+							hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 							cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 							tmpCaCarmovSQL.odbc->GetLastError(tmpCaCarmovSQL.GetHstmt());
@@ -1123,7 +1175,8 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 				else
 				{
 					//Crear tmp de caSegurosClientesNuevos
-					sprintf( cNombreTablaOrigen, "caSegurosClientesNuevos" );
+					//TO DO sprintf( cNombreTablaOrigen, "caSegurosClientesNuevos" );
+					hr = StringCchPrintf(cNombreTablaOrigen,size_t(cNombreTablaOrigen),TEXT("caCarmov"));
 					cNombreTablaOrigen[ 23 ] = 0;
 					iPID = crearTmp( cNombreTablaOrigen, bContinuar );
 					sTmpCaSegurosClientesNuevos.Format( "tmp%s%d", cNombreTablaOrigen, iPID );
@@ -1139,18 +1192,22 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 						tmpCaSegurosClientesNuevosSQL.activarCols();
 						tmpCaSegurosClientesNuevosSQL.prepararInsert( sTmpCaSegurosClientesNuevos );
 
-						sprintf( tmpCaSegurosClientesNuevosSQL.clave, "G" );
+						//TO DO sprintf( tmpCaSegurosClientesNuevosSQL.clave, "G" );
+						hr = StringCchPrintf(tmpCaSegurosClientesNuevosSQL.clave,size_t(tmpCaSegurosClientesNuevosSQL.clave),TEXT( "G" ));
 						tmpCaSegurosClientesNuevosSQL.clave[ 1 ] = 0;
-						sprintf( tmpCaSegurosClientesNuevosSQL.tipomovimiento, "8" );
+						//TO DO sprintf( tmpCaSegurosClientesNuevosSQL.tipomovimiento, "8" );
+						hr = StringCchPrintf(tmpCaSegurosClientesNuevosSQL.tipomovimiento,size_t(tmpCaSegurosClientesNuevosSQL.tipomovimiento),TEXT( "8" ));
 						tmpCaSegurosClientesNuevosSQL.tipomovimiento[ 1 ] = 0;
 						tmpCaSegurosClientesNuevosSQL.cliente = lCliente;
 						tmpCaSegurosClientesNuevosSQL.edad = 0 ;
 						tmpCaSegurosClientesNuevosSQL.caja = (short int) iCaja;
 						tmpCaSegurosClientesNuevosSQL.recibo = 0L; //En funcion PostgreSQL se le asigna.
 						tmpCaSegurosClientesNuevosSQL.folio = lFolio;
-						sprintf( tmpCaSegurosClientesNuevosSQL.movtoseguro, "C" );
+						//TO DO sprintf( tmpCaSegurosClientesNuevosSQL.movtoseguro, "C" );
+						hr = StringCchPrintf(tmpCaSegurosClientesNuevosSQL.movtoseguro,size_t(tmpCaSegurosClientesNuevosSQL.movtoseguro),TEXT("C"));
 						tmpCaSegurosClientesNuevosSQL.movtoseguro[ 1 ] = 0;
-						sprintf( tmpCaSegurosClientesNuevosSQL.statusseguro, "%c", cStatusSeg );
+						//TO DO sprintf( tmpCaSegurosClientesNuevosSQL.statusseguro, "%c", cStatusSeg );
+						hr = StringCchPrintf(tmpCaSegurosClientesNuevosSQL.statusseguro,size_t(tmpCaSegurosClientesNuevosSQL.statusseguro),TEXT("%c"), cStatusSeg);
 						tmpCaSegurosClientesNuevosSQL.statusseguro[ 1 ] = 0;
 						tmpCaSegurosClientesNuevosSQL.causabaja = (short int) iCausaBaja;
 						tmpCaSegurosClientesNuevosSQL.fechaventa.ponerFecha( iDiaActual, iMesActual, iAnioActual );
@@ -1167,12 +1224,14 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 							//Se obtiene el error
 							sServer.TrimLeft();
 							sServer.TrimRight();
-							sprintf(cIPDestino,"%s",sServer);
+							//TO DO sprintf(cIPDestino,"%s",sServer);
+							hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 							cIPDestino[15] = 0;
 							sSqlTxt.Format( "Insertar en tabla %s", sTmpCaSegurosClientesNuevos );
 							sSqlTxt.TrimLeft();
 							sSqlTxt.TrimRight();
-							sprintf(cConsulta,"%s",sSqlTxt);
+							//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+							hr = StringCchPrintf(cNombreTablaOrigen,size_t(cNombreTablaOrigen),TEXT("%s"),sSqlTxt);
 							cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 							tmpCaSegurosClientesNuevosSQL.odbc->GetLastError(tmpCaSegurosClientesNuevosSQL.GetHstmt());
@@ -1202,6 +1261,7 @@ void CDlgCancelarSeguroClub::graboSeguros( long lCliente, int iCausaBaja, long l
 
 int CDlgCancelarSeguroClub::crearTmp( char *cNombreTablaOrigen, bool &bContinuar )
 {
+	HRESULT hr = 0;
 	CString sSqlTxt;
 	int iPID = 0;
 
@@ -1222,11 +1282,13 @@ int CDlgCancelarSeguroClub::crearTmp( char *cNombreTablaOrigen, bool &bContinuar
 		//Se obtiene el error
 		sServer.TrimLeft();
 		sServer.TrimRight();
-		sprintf(cIPDestino,"%s",sServer);
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
 		sSqlTxt.TrimRight();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		crearTmpSQL.odbc->GetLastError(crearTmpSQL.GetHstmt());
@@ -1239,6 +1301,7 @@ int CDlgCancelarSeguroClub::crearTmp( char *cNombreTablaOrigen, bool &bContinuar
 
 int CDlgCancelarSeguroClub::pasarTmp( char *cNombreTablaOrigen, int iPID, bool &bContinuar )
 {
+	HRESULT hr = 0;
 	CString sSqlTxt;
 	int iFlagPaso = 0;
 
@@ -1268,11 +1331,13 @@ int CDlgCancelarSeguroClub::pasarTmp( char *cNombreTablaOrigen, int iPID, bool &
 		//Se obtiene el error
 		sServer.TrimLeft();
 		sServer.TrimRight();
-		sprintf(cIPDestino,"%s",sServer);
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
 		sSqlTxt.TrimRight();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		pasarTmpSQL.odbc->GetLastError(pasarTmpSQL.GetHstmt());
@@ -1286,19 +1351,23 @@ int CDlgCancelarSeguroClub::pasarTmp( char *cNombreTablaOrigen, int iPID, bool &
 void CDlgCancelarSeguroClub::actualizarCrSeguros( int iCausaBaja,long lFolio )
 {
 	CString sSqlTxt;
+	HRESULT hr = 0;
 
 	sSqlTxt.Format( "SELECT cncrcancelarseguroclub('%ld','%d','%d','%d','%ld','%ld');", lCliente, iCausaBaja, iDiaActual, iMesActual, iAnioActual, lFolio );
 	CConsultarPID actCrSegurosSQL( &odbcCartera ); //conexión a cartera
 	if( !actCrSegurosSQL.Exec( sSqlTxt ) )
 	{
+		
 		//Se obtiene el error
 		sServer.TrimLeft();
 		sServer.TrimRight();
-		sprintf(cIPDestino,"%s",sServer);
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		sSqlTxt.TrimLeft();
 		sSqlTxt.TrimRight();
-		sprintf(cConsulta,"%s",sSqlTxt);
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
 
 		actCrSegurosSQL.odbc->GetLastError(actCrSegurosSQL.GetHstmt());
@@ -1380,7 +1449,7 @@ void CDlgCancelarSeguroClub::actualizarCrSeguros( int iCausaBaja,long lFolio )
 				memcpy(&cSexo[0],xCartera.sexo,1);			
 				cSexo[1]=0;
 
-				sprintf(cComandoCNW,"%04d %09ld %s %s %s %s 5 %s %s %s", iTienda, lCliente, cNombre, cPaterno, cMaterno, cSexo, cIpHuellasCtes, cIpGlobalTiendas, cIpHllasPasstda);
+				//TO DO sprintf(cComandoCNW,"%04d %09ld %s %s %s %s 5 %s %s %s", iTienda, lCliente, cNombre, cPaterno, cMaterno, cSexo, cIpHuellasCtes, cIpGlobalTiendas, cIpHllasPasstda);
 
 				bContinua=true;
 
@@ -1428,6 +1497,7 @@ static int pantallaInvalida()
 
 int CDlgCancelarSeguroClub::checarHuellaCliente(long lCliente,int iCaja,long lEmpleado,int iMuestraMsg,int iTienda)
 {
+	HRESULT hr = 0;
 bool bRespuesta, bProceso=true;
 CString  sNombre,sApellidoPaterno,sApellidoMaterno,sTexto,sConsulta,sSqlTxt,sServer;
 char cSexo=' ',/*cArchivo[80],*/cTda[5],cCliente[15],/*cRespuesta[150],cRespuesta2[80],*/cConsulta[1002],cIPDestino[22];
@@ -1458,9 +1528,11 @@ int iFlagRecaptura = 0;
 	if (!consultarClienteSQL.Exec(sSqlTxt))
 	{
 		consultarClienteSQL.odbc->GetLastError(consultarClienteSQL.GetHstmt());
-		sprintf(cConsulta,"%s",sSqlTxt);
+		//TO DO sprintf(cConsulta,"%s",sSqlTxt);
+		hr = StringCchPrintf(cConsulta,size_t(cConsulta),TEXT("%s"),sSqlTxt);
 		cConsulta[ sSqlTxt.GetLength() ] = 0;
-		sprintf(cIPDestino,"%s",sServer);
+		//TO DO sprintf(cIPDestino,"%s",sServer);
+		hr = StringCchPrintf(cIPDestino,size_t(cIPDestino),TEXT("%s"),sServer);
 		cIPDestino[15] = 0;
 		grabarMensajeError( "N",iCaja,cIPDestino,"MenuSeguroClub","CDlgMebuSeguroClub","desplegarCliente",cConsulta,lEmpleado,"Error #6232",consultarClienteSQL.odbc,iMuestraMsg );
 	    bRespuesta = false;
@@ -1480,9 +1552,12 @@ int iFlagRecaptura = 0;
 			sNombre.Trim();
 			sApellidoPaterno.Trim();
 			sApellidoMaterno.Trim();
-			sprintf(cNombre, "%s", sNombre);
-			sprintf(cApellidoPaterno, "%s", sApellidoPaterno);
-			sprintf(cApellidoMaterno, "%s", sApellidoMaterno);
+			//TO DO sprintf(cNombre, "%s", sNombre);
+			hr = StringCchPrintf(cNombre,size_t(cNombre),TEXT( "%s"), sNombre);
+			//TO DO sprintf(cApellidoPaterno, "%s", sApellidoPaterno);
+			hr = StringCchPrintf(cApellidoPaterno,size_t(cApellidoPaterno),TEXT("%s"), sApellidoPaterno);
+			//TO DO sprintf(cApellidoMaterno, "%s", sApellidoMaterno);
+			hr = StringCchPrintf(cApellidoMaterno,size_t(cApellidoMaterno),TEXT("%s"),sApellidoMaterno);
 		}
 	}			
 
@@ -1526,9 +1601,9 @@ int iFlagRecaptura = 0;
 								iFlag = 1;
 								iFlagInvalido = 1;
 							}
-							sprintf( cTda, "%04d", iTienda );
-							sprintf( cCliente, "%09d", lCliente );
-							sprintf(cRespuesta,"%04d %09d",iTienda,lCliente);
+							//TO DO sprintf( cTda, "%04d", iTienda );
+							//TO DO sprintf( cCliente, "%09d", lCliente );
+							//TO DO sprintf(cRespuesta,"%04d %09d",iTienda,lCliente);
 							cRespuesta[14]= ' ';
 							checarNulos( cNombre,15 );
 							memcpy(cRespuesta2,cNombre,15);
@@ -1636,7 +1711,7 @@ int iFlagRecaptura = 0;
 									//Solo se pide la huella del gerente por que la huella del cliente es invalida
 									if ( iTipo == 0 )
 									{
-										sprintf( cTda, "%03d", iTienda );
+										//TO DO sprintf( cTda, "%03d", iTienda );
 										sTexto.Format( "QUE GERENTE VERIFIQUE IDENTIFICACION DEL CLIENTE Y DECIDE. ¿DESEA AUTORIZAR?" );
 										if ( AfxMessageBox( sTexto, MB_YESNO|MB_ICONQUESTION ) == IDYES )
 										{
@@ -1684,9 +1759,9 @@ int iFlagRecaptura = 0;
 					else
 					{
 						consultarcrHuella.odbc->GetLastError(consultarcrHuella.GetHstmt());
-						sprintf(cConsulta,"%s",sConsulta);
+						//TO DO sprintf(cConsulta,"%s",sConsulta);
 						cConsulta[ sConsulta.GetLength() ] = 0;
-						sprintf(cIPDestino,"%s",sServer);
+						//TO DO sprintf(cIPDestino,"%s",sServer);
 						cIPDestino[15] = 0;
 						grabarMensajeError( "N",iCaja,cIPDestino,"MenuSeguroClub","CDlgMenuSeguroClub","validarHuellaCliente",cConsulta,lEmpleado,"ERROR EN LA CONSULTA",consultarcrHuella.odbc,iMuestraMsg );
 					}
@@ -1746,6 +1821,7 @@ void CDlgCancelarSeguroClub::OnEnChangeTipo()
 }
 bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 {
+	HRESULT hr = 0;
 	bool bContinuar = false;
 	CString sTexto;
 	int iLongitud=0,iRespuesta=0;
@@ -1773,11 +1849,13 @@ bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 		sTexto.Format("%s",cIpServidorCartera);
 		sTexto.Trim();
 		iLongitud = sTexto.GetLength();
-		sprintf( argv.sServer, "%s", sTexto );
+		//TO DO sprintf( argv.sServer, "%s", sTexto );
+		hr = StringCchPrintf(argv.sServer,size_t(argv.sServer),TEXT("%s"), sTexto);
 
 		grabarcarmovx.sTipoMensaje=2;
 		grabarcarmovx.iTipoOpcion=1;
-		sprintf( grabarcarmovx.IpServidor , "%s", cIpServidorCartera );
+		//TO DO sprintf( grabarcarmovx.IpServidor , "%s", cIpServidorCartera );
+		hr = StringCchPrintf(grabarcarmovx.IpServidor,size_t(grabarcarmovx.IpServidor),TEXT("%s"),cIpServidorCartera);
 
 		grabarcarmovx.cTipoMovimiento = '8';
 
@@ -1877,17 +1955,24 @@ bool CDlgCancelarSeguroClub::obtenerFolioRecibo( long lCliente, int iCausaBaja, 
 
 void CDlgCancelarSeguroClub::fObtenerMensajeSeguro()
 {
+	HRESULT hr = 0;
 	char cSql[100];
 	CConsultarMensajeSeguro consultaMensajeSeguro(&odbcTiendaNumero);
 	memset(cMensajeSeguro,0,sizeof(cMensajeSeguro));
 	memset(cSql,0,sizeof(cSql));
-	sprintf(cSql,"SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378");
+	//TO DO sprintf(cSql,"SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378");
+	hr = StringCchPrintf(cSql,size_t(cSql),TEXT("SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378"));
+
 	if(consultaMensajeSeguro.Exec(cSql))
 	{
 		consultaMensajeSeguro.activarCols();
 		if(consultaMensajeSeguro.leer())
 		{
-			sprintf( cMensajeSeguro,"%s",consultaMensajeSeguro.des_mensaje );
+			/*
+			//TO DO sprintf( cMensajeSeguro,"%s",consultaMensajeSeguro.des_mensaje );
+			*/
+			hr = StringCchPrintf(cMensajeSeguro,size_t(cMensajeSeguro),TEXT("%s"),consultaMensajeSeguro.des_mensaje);
+			
 			AfxMessageBox( cMensajeSeguro, MB_ICONINFORMATION );
 		}
 	}
