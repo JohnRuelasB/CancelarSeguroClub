@@ -39,6 +39,13 @@
 #endif
 
 
+void mem_cpy(void *dest, void *src, size_t n){
+	    char *csrc = (char*)src;
+        char *cdest = (char*)dest;
+        for(unsigned int i=0; i<n; i++)
+                cdest[i] = csrc[i];
+}
+
 class CAboutDlg : public CDialogoML
 {
 public:
@@ -322,7 +329,7 @@ bool CDlgCancelarSeguroClub::validarControl(char *cCadena)
     CString sTexto;
 	char cMensajeOut[MAX_BUFFER_XML] = {0};
 	
-	memset( cCadena, ' ', 80 );
+	SecureZeroMemory( cCadena, sizeof(cCadena));
 
     switch( iFoco )
     {
@@ -334,7 +341,7 @@ bool CDlgCancelarSeguroClub::validarControl(char *cCadena)
 
 			if( iCausa <= 0 || iCausa > 4 )
 			{
-				memcpy( cCadena, "Causa de cancelación inválida" , 29 );//Causa de cancelación inválida
+				mem_cpy( cCadena, "Causa de cancelación inválida" , 29 );//Causa de cancelación inválida
 				cCadena[ 29 ] = 0;
 				bValorRegresa = false;
 			}
@@ -428,10 +435,10 @@ void CDlgCancelarSeguroClub::OnBnClickedF10aceptar()
 		if ( consultarcrHuella.Leer() )
 		{
 			unlink( "c:\\template\\template.02" );			
-			memset(cRespuesta, ' ', sizeof(cRespuesta));
+			SecureZeroMemory(cRespuesta, ' ', sizeof(cRespuesta));
 			memcpy( &Templates.templates1, &consultarcrHuella.templatededoderecho, 700 );
 
-			memset(cRespuesta2, 0, sizeof(cRespuesta2));
+			SecureZeroMemory(cRespuesta2, 0, sizeof(cRespuesta2));
 			for( int i = 0; i < 10; i++ )
 			{
 				cRespuesta2[i] = Templates.templates1[i]+'0';
@@ -450,7 +457,7 @@ void CDlgCancelarSeguroClub::OnBnClickedF10aceptar()
 			{
 				C_Archivo arc_templ;
 				arc_templ.abrir( "c:\\template\\template.02", sizeof(Templates));
-				memset(&templ,0,sizeof(templ));
+				SecureZeroMemory(&templ,0,sizeof(templ));
 
 				if ( consultarcrHuella.cliente == lCliente )
 				{
@@ -957,7 +964,7 @@ bool CDlgCancelarSeguroClub::buscaSeguroCartera( long lCliente, int &iSegCartera
 					{
 						sFechaVenc.Format("%04d%02d%02d",crSegurosSQL.fechavencimiento.ano(),crSegurosSQL.fechavencimiento.mes(), crSegurosSQL.fechavencimiento.dia());
 
-						if( atol(sFechaVenc) < atol(sFechaGn) )
+						if( strtol(sFechaVenc,NULL,10) < strtol(sFechaGn,NULL,10) )
 						{
 							bMostrarSeguro = true;
 							lFolioConsulta  = crSegurosSQL.folio;
@@ -983,7 +990,7 @@ bool CDlgCancelarSeguroClub::buscaSeguroCartera( long lCliente, int &iSegCartera
 
 		m_folio.GetWindowText (sTexto);
 		sTexto.Trim ();
-		lFolioMenu = atol( sTexto );
+		lFolioMenu = strtol( sTexto,NULL, 10 );
 
 		if (lFolioMenu == lFolioConsulta )
 		{
@@ -1387,9 +1394,9 @@ void CDlgCancelarSeguroClub::actualizarCrSeguros( int iCausaBaja,long lFolio )
 	char cIpHuellasCtes[20], cIpGlobalTiendas[20], cIpHllasPasstda[20], cCadenaPaso[16];
 	char cSqlTxt[255],cNombre[20],cPaterno[20],cMaterno[20],cSexo[3];
 	
-	memset(cIpHuellasCtes,' ',sizeof(cIpHuellasCtes));
-	memset(cIpGlobalTiendas,' ',sizeof(cIpGlobalTiendas));
-	memset(cIpHllasPasstda,' ',sizeof(cIpHllasPasstda));
+	SecureZeroMemory(cIpHuellasCtes,' ',sizeof(cIpHuellasCtes));
+	SecureZeroMemory(cIpGlobalTiendas,' ',sizeof(cIpGlobalTiendas));
+	SecureZeroMemory(cIpHllasPasstda,' ',sizeof(cIpHllasPasstda));
 
 	if ( consultarIpServidor( &odbc, cIpHuellasCtes, SERV_HUELLASCLIENTES, cSqlTxt ) )
 	{
@@ -1413,13 +1420,13 @@ void CDlgCancelarSeguroClub::actualizarCrSeguros( int iCausaBaja,long lFolio )
 			if(xCartera.Leer())
 			{
 				
-				memset(cComandoCNW,' ',sizeof(cComandoCNW));			
+				SecureZeroMemory(cComandoCNW,' ',sizeof(cComandoCNW));			
 				if ( !access("c:\\SYS\\PROGS\\CNW7.EXE", 0 ) == 0 )
 				{			
 					AfxMessageBox( "No se encuentra módulo CNW7" );
 				}			
 				
-				memset(cCadenaPaso,' ',sizeof(cCadenaPaso));
+				SecureZeroMemory(cCadenaPaso,' ',sizeof(cCadenaPaso));
 				memcpy(cCadenaPaso,xCartera.nombre,15);
 				if( checarBlancos( cCadenaPaso,15 )==0 ) 
 				{
@@ -1508,17 +1515,17 @@ char cMensajeOut[MAX_BUFFER_XML] = {0};
 long lEmpleadox = 0; 
 int iFlagRecaptura = 0;
 
-	//memset(cRespuesta,0, sizeof(cRespuesta));
-	//memset(cRespuesta2,0, sizeof(cRespuesta2));
-	memset(cTda,0, sizeof(cTda));
-	memset(cCliente,0, sizeof(cCliente));
-	memset(cNombre,0, sizeof(cNombre));
-	memset(cApellidoPaterno,0, sizeof(cApellidoPaterno));
-	memset(cApellidoMaterno,0, sizeof(cApellidoMaterno));
-	memset(cSql,0, sizeof(cSql));		
+	//SecureZeroMemory(cRespuesta,0, sizeof(cRespuesta));
+	//SecureZeroMemory(cRespuesta2,0, sizeof(cRespuesta2));
+	SecureZeroMemory(cTda, sizeof(cTda));
+	SecureZeroMemory(cCliente, sizeof(cCliente));
+	SecureZeroMemory(cNombre, sizeof(cNombre));
+	SecureZeroMemory(cApellidoPaterno, sizeof(cApellidoPaterno));
+	SecureZeroMemory(cApellidoMaterno,sizeof(cApellidoMaterno));
+	SecureZeroMemory(cSql, sizeof(cSql));		
 	//Templ Templates, templ;
-	//memset(&Templates, ' ', sizeof(Templates));
-	//memset(&templ, ' ', sizeof(templ));		
+	//SecureZeroMemory(&Templates, ' ', sizeof(Templates));
+	//SecureZeroMemory(&templ, ' ', sizeof(templ));		
 
 	sSqlTxt.Format(" SELECT nombre, apellidopaterno, apellidomaterno, ciudad, colonia, puntualidad,  "
 		           " situacionespecial,causasitesp,sexo,fechanacimiento,ingresomensual FROM crcliente "
@@ -1562,7 +1569,7 @@ int iFlagRecaptura = 0;
 	}			
 
 	// VentaSeguroClub
-	/*memset(cArchivo, 0, sizeof(cArchivo));
+	/*SecureZeroMemory(cArchivo, 0, sizeof(cArchivo));
 	nombreArchivo( "CNW7.EXE", cArchivo, DIRECTORIO_PROGS );
 	///Huella de cliente
 	if ( access( cArchivo, 0 ) != 0 )
@@ -1587,9 +1594,9 @@ int iFlagRecaptura = 0;
 					{
 						unlink( "c:\\template\\template.02" );
 						{																			
-							memset(cRespuesta, ' ', sizeof(cRespuesta));
+							SecureZeroMemory(cRespuesta, ' ', sizeof(cRespuesta));
 							memcpy( &Templates.templates1, &consultarcrHuella.templatededoderecho, 700 );
-							memset(cRespuesta2, 0, sizeof(cRespuesta2));
+							SecureZeroMemory(cRespuesta2, 0, sizeof(cRespuesta2));
 							for( int i = 0; i < 10; i++ )
 							{
 								cRespuesta2[i] = Templates.templates1[i]+'0';
@@ -1637,7 +1644,7 @@ int iFlagRecaptura = 0;
 								//formar archivo para comparar
 								C_Archivo arc_templ;
 								arc_templ.abrir( "c:\\template\\template.02", sizeof(templ));
-								memset(&templ,0,sizeof(templ));
+								SecureZeroMemory(&templ,0,sizeof(templ));
 								if ( consultarcrHuella.cliente == lCliente )
 								{
 									memcpy( templ.templates1, &consultarcrHuella.templatededoderecho, 700 );
@@ -1839,8 +1846,8 @@ bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 		ServicioInetCarmovx grabarcarmovx;
 		SParametros argv;
 
-		memset( &argv, 0, sizeof( argv ) );
-		memset( &grabarcarmovx, 0, sizeof( grabarcarmovx ) );
+		SecureZeroMemory( &argv, sizeof( argv ) );
+		SecureZeroMemory( &grabarcarmovx, sizeof( grabarcarmovx ) );
 
 		argv.iLink = generarLink();
 		argv.iNumSistema = 20506;   //puerto cartera central
@@ -1876,7 +1883,7 @@ bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 		grabarcarmovx.cArea = 'N';
 		grabarcarmovx.iPlazoConvenio=0;
 		grabarcarmovx.iEfectuo=lEmpleado;
-		memcpy(grabarcarmovx.cClaveAjuste,"  ",2);
+		mem_cpy(grabarcarmovx.cClaveAjuste,"  ",2);
 
 		grabarcarmovx.tFechaSaldaConDia=1;
 		grabarcarmovx.tFechaSaldaConMes=1;
@@ -1902,8 +1909,8 @@ bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 		grabarcarmovx.iCiudadTiendaMov = (short)iCiudad;
 		grabarcarmovx.cTipoGrabado='T';
 
-		memcpy( cArgvIN1, &argv, sizeof( argv ) );
-		memcpy( cArgvIN2, &grabarcarmovx, sizeof( grabarcarmovx ) );
+		mem_cpy( cArgvIN1, &argv, sizeof( argv ) );
+		mem_cpy( cArgvIN2, &grabarcarmovx, sizeof( grabarcarmovx ) );
 
 		nombreArchivo( "GN0063", cDll, DIRECTORIO_GN );
 
@@ -1913,7 +1920,7 @@ bool CDlgCancelarSeguroClub::grabarCarmovx( int iCausaBaja )
 			iRespuesta = dll.getResultado();
 			if( iRespuesta == 1 )
 			{
-				memcpy( &estructurarespuesta, cArgvOUT1, sizeof( estructurarespuesta ) );
+				mem_cpy( &estructurarespuesta, cArgvOUT1, sizeof( estructurarespuesta ) );
 				if( estructurarespuesta.iSalida==1 )
 				{							
 					bContinuar=true;					
@@ -1958,8 +1965,8 @@ void CDlgCancelarSeguroClub::fObtenerMensajeSeguro()
 	HRESULT hr = 0;
 	char cSql[100];
 	CConsultarMensajeSeguro consultaMensajeSeguro(&odbcTiendaNumero);
-	memset(cMensajeSeguro,0,sizeof(cMensajeSeguro));
-	memset(cSql,0,sizeof(cSql));
+	SecureZeroMemory(cMensajeSeguro,sizeof(cMensajeSeguro));
+	SecureZeroMemory(cSql,sizeof(cSql));
 	//TO DO sprintf(cSql,"SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378");
 	hr = StringCchPrintf(cSql,size_t(cSql),TEXT("SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378"));
 
