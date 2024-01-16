@@ -329,7 +329,7 @@ bool CDlgCancelarSeguroClub::validarControl(char *cCadena)
     CString sTexto;
 	char cMensajeOut[MAX_BUFFER_XML] = {0};
 	
-	ZeroMemory( cCadena, sizeof(cCadena));
+	ZeroMemory( cCadena, size_t(cCadena));
 
     switch( iFoco )
     {
