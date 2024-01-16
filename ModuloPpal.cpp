@@ -10,6 +10,13 @@
 
 #include "strsafe.h"
 
+void memcopy(void *dest, void *src, size_t n){
+	    char *csrc = (char*)src;
+        char *cdest = (char*)dest;
+        for(unsigned int i=0; i<n; i++)
+                cdest[i] = csrc[i];
+}
+
 
 int CN0027( char *cInput1, char *cInput2, char *cOutPut1, char *cOutPut2 )
 {
@@ -25,9 +32,9 @@ int CN0027( char *cInput1, char *cInput2, char *cOutPut1, char *cOutPut2 )
 
     SParametros parametros;
 
-    memset( &parametros, 0, sizeof( SParametros ) );
-
-    memcpy( &parametros, cInput1, sizeof( SParametros ) );
+    SecureZeroMemory( &parametros, sizeof( SParametros ) );
+	
+    memcopy( &parametros, cInput1, sizeof( SParametros ) );
 
     if ( checarLink( parametros.iLink ) )
     {	

@@ -329,7 +329,7 @@ bool CDlgCancelarSeguroClub::validarControl(char *cCadena)
     CString sTexto;
 	char cMensajeOut[MAX_BUFFER_XML] = {0};
 	
-	SecureZeroMemory( cCadena, sizeof(cCadena));
+	ZeroMemory( cCadena, sizeof(cCadena));
 
     switch( iFoco )
     {
@@ -337,7 +337,7 @@ bool CDlgCancelarSeguroClub::validarControl(char *cCadena)
 			m_causa.GetWindowText( sTexto );			
 			sTexto.TrimLeft();
 			sTexto.TrimRight();
-			iCausa = atoi( sTexto );
+			iCausa = strtol( sTexto,NULL,10 );
 
 			if( iCausa <= 0 || iCausa > 4 )
 			{
