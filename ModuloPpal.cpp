@@ -8,8 +8,12 @@
 #include "wtienda.hpp"
 #include "CargarDLL.h"
 
+#include "strsafe.h"
+
+
 int CN0027( char *cInput1, char *cInput2, char *cOutPut1, char *cOutPut2 )
 {
+	HRESULT hr = 0;
 	UNREFERENCED_PARAMETER( cInput2 );
 	UNREFERENCED_PARAMETER( cOutPut2 );
 	
@@ -38,7 +42,8 @@ int CN0027( char *cInput1, char *cInput2, char *cOutPut1, char *cOutPut2 )
 		dlg.iSistema = parametros.iNumSistema;
 		dlg.lFolio = parametros.lFolioSeguro;
 		dlg.iTipo = parametros.iTipo;		        
-		sprintf(cIpTiendaLocal,"%s",dlg.sServer);
+		//to do sprintf(cIpTiendaLocal,"%s",dlg.sServer);
+		hr = StringCchPrintf(cIpTiendaLocal,size_t(cIpTiendaLocal),TEXT("%s"),dlg.sServer);
 
 		//if ( abrirConexion(cIpTiendaLocal,cIpTiendaLocal,dlg.iTienda) == true )
 		if ( abrirConexionBD( &odbcTiendaNumero, 0, cIpTiendaLocal, cIpTiendaLocal, CONECTA_TIENDANUMERO, dlg.iTienda ) )
@@ -48,9 +53,11 @@ int CN0027( char *cInput1, char *cInput2, char *cOutPut1, char *cOutPut2 )
 			{
 				if ( abrirConexionBD( &odbcCartera, SERV_CARTERA, cIPServidorCartera, cIPServidorCarteraAlterno, CONECTA_CARTERA, parametros.iTienda ) )
 				{
-					sprintf(dlg.cIpServidorCartera,"%s",cIPServidorCartera);
+					//to do sprintf(dlg.cIpServidorCartera,"%s",cIPServidorCartera);
+					hr = StringCchPrintf(dlg.cIpServidorCartera,size_t(dlg.cIpServidorCartera),TEXT("%s"),cIPServidorCartera);
 					dlg.DoModal();
-					sprintf( cOutPut1,"%d",dlg.iAllOk );
+					//to do sprintf( cOutPut1,"%d",dlg.iAllOk );
+					hr = StringCchPrintf(cOutPut1,size_t(cOutPut1),TEXT("%d"),dlg.iAllOk);
 					nRegresa=1;
 				}
 				else

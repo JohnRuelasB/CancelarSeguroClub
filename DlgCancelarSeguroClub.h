@@ -57,6 +57,27 @@ public:
 	int iDiaActual, iMesActual, iAnioActual, iAllOk, iTipo;
 	long lEmpleado, lCliente, lFolio;
 	bool ShiftTab;
+	
+	void main (){
+	iTienda = 0;
+	iCaja = 0;
+	iSistema = 0;
+	iMuestraMsg = 0;
+	iCausa = 0;
+	iControles = 0;
+	iFoco = 0;
+	iCiudad= 0;
+	iDiaActual = 0;
+	iMesActual = 0;
+	iAnioActual = 0;
+	iAllOk = 0;
+	iTipo = 0;
+	lEmpleado = 0;
+	lCliente = 0;
+	lFolio = 0;
+	}
+
+
 
 // Datos del cuadro de diálogo
     enum { IDD = IDD_DLGCANCELARSEGUROCLUB };
